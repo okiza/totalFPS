@@ -1,1 +1,6 @@
-<h1>Strona główna</h1>
+Servers list:<br>
+<% @servers_list.each do |server| %>
+	Name: <%= server.name %><br>
+	Adress: <%= server.ip %>:<%= server.port %><br>
+	Game: <%= server.game %><br>
+<% end %>

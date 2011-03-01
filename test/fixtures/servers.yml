@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ip: MyText
+  port: 1
+  name: MyText
+
+two:
+  ip: MyText
+  port: 1
+  name: MyText

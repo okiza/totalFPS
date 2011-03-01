@@ -1,50 +1,161 @@
-/* totalFPS style sheet */
+/* totalFPs style sheet */
+
+@font-face {
+  font-family: myfont1;
+  src: url("Top Secret.ttf");
+}
+@font-face {
+  font-family: myfont2;
+  src: url("VeraMono.ttf");
+}
 
 body{
-	background-color: #182602;
+	background-color: #253202;
 }
-#outside_box{
+#main_layout{
 	display: block;
 	width: 1024px;
-	border: solid #4A8506 1px;
-	background-color: #2F5503;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 15px;
+	margin-top: 0px;
 	padding: 10px;
-	color: white;
+	border: solid #5A7B06 1px;
 }
-/* Error and notice box style */
-#flash_error{
+#logo{
 	display: block;
-	width: 700px;
-	height: 40px;
-	text-align: center;
+	width: 922px;
+	height: 265px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 15px;
-	padding-top: 10px;
-	font-family: arial;
-	font-weight: bold;
-	font-size: 20px;
-	color: white;
-	background-color: #AD0000;
-	border: solid #FF0D0D 2px;
+	background-image: url("/images/logo.png");
+	background-repeat: no-repeat;
 }
-#flash_notice{
+#top_menu{
 	display: block;
-	width: 700px;
-	height: 40px;
-	text-align: center;
+	width: 873px;
+	height: 57px;
+	background-image: url("/images/menubar.png");
+	background-repeat: no-repeat;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 15px;
-	padding-top: 10px;
-	font-family: arial;
-	font-weight: bold;
-	font-size: 20px;
-	color: white;
-	background-color: #066311;
-	border: solid #07D01F 2px;
 }
-/* END OF FILE */
+#top_menu_buttons_list{
+	display: block;
+	width: 810px;
+	height: 46px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#top_menu_buttons_list .separator{
+	vertical-align: center;
+	font-size: 30px; 
+}
+#top_menu_buttons_list a{
+	display: inline-block;
+	width: auto;
+	height: 27px;
+	font-size: 20px;
+	padding: 10px 10px 4px 10px;
+	color: #749A04;
+	font-family: myfont1;
+	text-align: center;
+	text-decoration: none;
+	margin-top: 6px;
+	margin-right: 2px;
+}
+#top_menu_buttons_list a:hover{
+	display: inline-block;
+	width: auto;
+	height: 27px;
+	font-size: 20px;
+	padding: 10px 10px 4px 10px;
+	color: #0FB3D8;
+	font-family: myfont1;
+	text-align: center;
+	text-decoration: none;
+	margin-top: 6px;
+	margin-right: 2px;
+	background-color: #06333D;
+}
+#center_box{
+	display: block;
+	width: 990px;
+	font-family: arial;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 10px;
+}
+#left_content{
+	display: inline-block;
+	width: 220px;
+	border-right: solid #5E7F03 1px;
+}
+#center_content{
+	display: inline-block;
+	width: 500px;
+	vertical-align: top;
+	padding: 10px;
+	border: solid #A4A4A4 1px;
+}
+#right_content{
+	display: inline-block;
+	width: 220px;
+	vertical-align: top;
+	border-left: solid #5E7F03 1px;
+}
+.box{
+	display: block;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 12px; 
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: solid #A4A4A4 2px;
+}
+.box #content{
+	display: block;
+	width: 190px;
+	padding: 5px;
+	text-align: left;
+	font-size: 11px;
+	font-family: myfont2;
+	background-color: #1E2501;
+}
+.box #title{
+	display: block;
+	width: 190px;
+	padding: 2px 0px 2px 10px;
+	font-size: 13px;
+	color: #B7E20A;
+	font-family: myfont2;
+	background-color: black;
+	border-bottom: solid white 1px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#center_content #title{
+	display: block;
+	width: 485px;
+	font-family: myfont2;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: solid white 1px;
+	font-size: 17px;
+	color: #10BBC7;
+}
+#center_content #main_content{
+	display: block;
+	width: 490px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #1E2501;
+	color: white;
+	font-family: myfont2;
+	font-size: 12px;
+	padding: 5px;
+}

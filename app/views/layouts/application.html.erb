@@ -1,23 +1,76 @@
 <!DOCTYPE HTML>
 <head>
-    <title><%= @title %></title>
+	<title><%= @title %></title>
     <%= javascript_include_tag 'jquery' %>
     <%= stylesheet_link_tag 'style' %>
 	<%= stylesheet_link_tag 'sof2colors' %>
 </head>
 <body>
-	<span id = "outside_box">
-	
+	<span id = "main_layout">
+		<span id = "logo"></span>
+		<span id = "top_menu">
+			<span id = "top_menu_buttons_list">
+				<%= link_to "Home", {:controller => "main_page", :action => "index"} %> <span class = "separator">|</span>
+				<a href = "#">Servers</a><span class = "separator">|</span>
+				<a href = "#">Players</a><span class = "separator">|</span>
+				<a href = "#">Games</a><span class = "separator">|</span>
+				<a href = "#">Help</a>
+			</span>
+		</span>
+		
 		<% if flash[:notice] %>
 			<span id = "flash_notice"> <%= flash[:notice] %> </span>
 		<% elsif flash[:error] %>
 			<span id = "flash_error">Error: <%= flash[:error] %> </span>
 		<% end %>
 		
-		<span id = "main_content">
-			<%= yield %>
+		<span id = "center_box">
+			<span id = "left_content">
+				<span class = "box">
+					<span id = "title">>> Box1 Title << </span>
+					<span id = "content">
+						jakas tresc jakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+					</span>
+				</span>
+				<span class = "box">
+					<span id = "title">>> Box2 Title << </span>
+					<span id = "content">
+						jakas tresc jakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+					</span>
+				</span>
+			</span>
+			<span id = "center_content">
+				<span id = "title"> <%= @content_title %> </span>
+				<span id = "main_content">
+					<%= yield %>
+				</span>
+			</span>
+			<span id = "right_content">
+				<span class = "box">
+					<span id = "title">>> Box1 Title << </span>
+					<span id = "content">
+						jakas tresc jakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+					</span>
+				</span>
+				<span class = "box">
+					<span id = "title">>> Box2 Title << </span>
+					<span id = "content">
+						jakas tresc jakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+						jakas trescjakas trescjakas tresc
+					</span>
+				</span>
+			</span>
 		</span>
-		
-	</span>	
+	</span>
 </body>
-</html>
