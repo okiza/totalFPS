@@ -1,0 +1,40 @@
+<% if @serverInfo[:alive] == true %>
+	Status: Alive<br>
+<% else %>
+	Status: Dead<br>
+<% end %>
+	IP:<%= @serverInfo[:ip] %>:<%= @serverInfo[:port] %><br>
+	Players:<%= @serverInfo[:players] %>/<%= @serverInfo[:maxclients] %><br>
+	Bots:<%= @serverInfo[:bots] %><br>
+	Scorelimit:<%= @serverInfo[:scorelimit] %><br>
+	Timelimit:<%= @serverInfo[:timelimit] %><br>
+	Pure:<%= @serverInfo[:pure] %><br>
+	Punk Buster:<%= @serverInfo[:punkbuster] %><br>
+	Map: <%= @serverInfo[:mapname] %><br>
+	Gametype: <%= @serverInfo[:gametype] %><br>
+	
+	<% if @serverInfo[:gametype] == "DM" || @serverInfo[:gametype] == "dm" %>
+		Deathmatch player list:
+		<% @serverInfo[:deathmatch].reverse.each do |element| %>
+			<% name = element[0].dup %>
+			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
+		<% end %>
+	<% else %>
+		Blue team score:<%= @serverInfo[:blueScore] %><br>
+		Red team score:<%= @serverInfo[:redScore] %><br>
+		<br>
+		Red team:<br>
+		=========================================================<br>
+		<% @serverInfo[:redTeam].reverse.each do |element| %>
+			<% name = element[0].dup %>
+			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
+		<% end %>
+		<br>
+		Blue team:<br>
+		==========================================================<br>
+		<% @serverInfo[:blueTeam].reverse.each do |element| %>
+			<% name = element[0].dup %>
+			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
+		<% end %>
+	<% end %>
+

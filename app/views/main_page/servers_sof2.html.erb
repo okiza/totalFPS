@@ -1,0 +1,10 @@
+<% i = 1 %>
+<span id = "servers_list_header"><span id = "position">Position</span><span id = "name">Name</span></span>
+<% @sof2_servers.each do |server| %>
+	<% if i % 2 == 0%>
+		<span class = "servers_list_record1"><span id = "position"><%= i %>.</span><span id = "name"><%= link_to  "#{$sof2.parseColorsToHTML(server.server_name)}", sof2_stats_path(:id => server.id) %></span></span>
+	<% else %>
+		<span class = "servers_list_record2"><span id = "position"><%= i %>.</span><span id = "name"><%= link_to  "#{$sof2.parseColorsToHTML(server.server_name)}", sof2_stats_path(:id => server.id) %></span></span>
+	<% end %>
+	<% i += 1 %>
+<% end %>

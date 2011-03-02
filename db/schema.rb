@@ -9,15 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228194914) do
+ActiveRecord::Schema.define(:version => 20110302103204) do
 
-  create_table "servers", :force => true do |t|
+  create_table "sof2_servers", :force => true do |t|
     t.text     "ip"
     t.integer  "port"
-    t.text     "name"
+    t.text     "server_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "game"
   end
 
 end

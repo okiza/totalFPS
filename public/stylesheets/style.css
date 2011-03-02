@@ -8,6 +8,10 @@
   font-family: myfont2;
   src: url("VeraMono.ttf");
 }
+@font-face {
+  font-family: myfont3;
+  src: url("Prototype.ttf");
+}
 
 body{
 	background-color: #253202;
@@ -22,6 +26,7 @@ body{
 	padding: 10px;
 	border: solid #5A7B06 1px;
 }
+/* LOGO style */
 #logo{
 	display: block;
 	width: 922px;
@@ -31,6 +36,7 @@ body{
 	background-image: url("/images/logo.png");
 	background-repeat: no-repeat;
 }
+/* Top menu style */
 #top_menu{
 	display: block;
 	width: 873px;
@@ -77,6 +83,42 @@ body{
 	margin-top: 6px;
 	margin-right: 2px;
 	background-color: #06333D;
+}
+/* Dropdown menu style */
+#top_menu_buttons_list .dropdown_menu{
+	display: inline-block;
+}
+#top_menu_buttons_list .dropdown_menu ul{
+	position: absolute; 
+	display: none; 
+	margin: 0px 0px 0px -6px; 
+	padding: 0px; 
+	list-style: none;
+}
+#top_menu_buttons_list .dropdown_menu ul li{
+	border-bottom: 1px solid #8E8F8C;
+	background-color: #313D01;
+}
+#top_menu_buttons_list .dropdown_menu ul li a{
+	display: block; 
+	width: 110px;
+	height: 17px;
+	margin-top: 0px;
+	font-family: arial; 
+	padding: 5px 5px 0px 5px;
+	font-size: 12px; 
+	color: #A2C907;
+}
+#top_menu_buttons_list .dropdown_menu ul li a:hover{
+	display:block; 
+	width: 110px; 
+	height: 17px;
+	font-family: arial; 
+	font-size: 12px;
+	margin-top: 0px;
+	padding: 5px 5px 0px 5px;
+	color: black;
+	background-color: #A0DC14;
 }
 #center_box{
 	display: block;
@@ -158,4 +200,71 @@ body{
 	font-family: myfont2;
 	font-size: 12px;
 	padding: 5px;
+}
+#servers_list_header{
+	display: block;
+	width: 100%;
+	height: 17px;
+	padding: 2px 0px 2px 0px;
+	background-color: #3A3002;
+	color: #DBB409;
+	font-size: 13px;
+}
+#servers_list_header #position{
+	display: inline-block;
+	width: 120px;
+	text-align: center;
+	border-right: solid white 1px;
+}
+#servers_list_header #name{
+	display: inline-block;
+	width: 360px;
+	text-align: center;
+}
+.servers_list_record1{
+	display: block;
+	width: 100%;
+	background-color: #C4A000;
+	color: white;
+}
+.servers_list_record1:hover{
+	display: block;
+	width: 100%;
+	background-color: #03687B;
+	color: white;
+}
+.servers_list_record1 a{
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	font-family: myfont3;
+}
+.servers_list_record2{
+	display: block;
+	width: 100%;
+	background-color: #7D6706;
+	color: white;
+}
+.servers_list_record2:hover{
+	display: block;
+	width: 100%;
+	background-color: #03687B;
+	color: white;
+}
+.servers_list_record2 a{
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	font-family: myfont3;
+}
+#position{
+	display: inline-block;
+	width: 120px;
+	text-align: center;
+	border-right: solid white 1px;
+}
+#name{
+	display: inline-block;
+	width: 360px;
+	text-align: center;
 }

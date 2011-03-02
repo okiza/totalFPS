@@ -39,6 +39,8 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.root :controller => "main_page", :action => 'index'
+  map.servers_sof2 '/servers_sof2', :controller => 'main_page', :action => 'servers_sof2'
+  map.sof2_stats '/sof2_stats', :controller => 'main_page', :action => 'sof2_stats'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
