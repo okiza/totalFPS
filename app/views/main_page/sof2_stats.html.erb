@@ -14,7 +14,7 @@
 	Gametype: <%= @serverInfo[:gametype] %><br>
 	
 	<% if @serverInfo[:gametype] == "DM" || @serverInfo[:gametype] == "dm" %>
-		Deathmatch player list:
+		Deathmatch player list:<br>
 		<% @serverInfo[:deathmatch].reverse.each do |element| %>
 			<% name = element[0].dup %>
 			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>

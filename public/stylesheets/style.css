@@ -136,16 +136,10 @@ body{
 }
 #center_content{
 	display: inline-block;
-	width: 500px;
+	width: 710px;
 	vertical-align: top;
 	padding: 10px;
 	border: solid #A4A4A4 1px;
-}
-#right_content{
-	display: inline-block;
-	width: 220px;
-	vertical-align: top;
-	border-left: solid #5E7F03 1px;
 }
 .box{
 	display: block;
@@ -182,7 +176,7 @@ body{
 }
 #center_content #title{
 	display: block;
-	width: 485px;
+	width: 690px;
 	font-family: myfont2;
 	margin-left: auto;
 	margin-right: auto;
@@ -192,7 +186,7 @@ body{
 }
 #center_content #main_content{
 	display: block;
-	width: 490px;
+	width: 690px;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #1E2501;
@@ -210,32 +204,23 @@ body{
 	color: #DBB409;
 	font-size: 13px;
 }
-#servers_list_header #position{
-	display: inline-block;
-	width: 120px;
-	text-align: center;
-	border-right: solid white 1px;
-}
-#servers_list_header #name{
-	display: inline-block;
-	width: 360px;
-	text-align: center;
-}
 .servers_list_record1{
 	display: block;
 	width: 100%;
 	background-color: #C4A000;
 	color: white;
+	padding: 4px 0px;
 }
 .servers_list_record1:hover{
 	display: block;
 	width: 100%;
 	background-color: #03687B;
 	color: white;
+	padding: 4px 0px;
 }
 .servers_list_record1 a{
 	display: block;
-	width: 100%;
+	width: 195px;
 	text-decoration: none;
 	font-family: myfont3;
 }
@@ -244,27 +229,110 @@ body{
 	width: 100%;
 	background-color: #7D6706;
 	color: white;
+	padding: 4px 0px;
 }
 .servers_list_record2:hover{
 	display: block;
 	width: 100%;
 	background-color: #03687B;
 	color: white;
+	padding: 4px 0px;
 }
 .servers_list_record2 a{
 	display: block;
-	width: 100%;
+	width: 195px;
 	text-decoration: none;
 	font-family: myfont3;
 }
 #position{
 	display: inline-block;
-	width: 120px;
+	width: 60px;
 	text-align: center;
 	border-right: solid white 1px;
+	color: #0FD5F8;
+	margin: 0px;
+	padding: 0px;
 }
 #name{
 	display: inline-block;
-	width: 360px;
+	width: 200px;
 	text-align: center;
+	border-right: solid white 1px;
+	margin: 0px;
+	padding: 0px;
+}
+#status{
+	display: inline-block;
+	width: 90px;
+	text-align: center;
+	border-right: solid white 1px;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+}
+#adress{
+	display: inline-block;
+	width: 190px;
+	text-align: center;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+}
+#status #alive{
+	color: #58D908;
+	padding: 0px;
+}
+#status #dead{
+	color: #D80E0E;
+	padding: 0px;
+}
+#players{
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	color: black;
+	margin: 0px;
+	padding: 0px;
+	border-right: solid white 1px;
+}
+#top_position{
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+	border-right: solid white 1px;
+	margin: 0px;
+	padding: 0px;
+}
+#top_name{
+	display: inline-block;
+	width: 208px;
+	text-align: center;
+	border-right: solid white 1px;
+	margin: 0px;
+	padding: 0px;
+}
+#top_status{
+	display: inline-block;
+	width: 98px;
+	text-align: center;
+	border-right: solid white 1px;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+}
+#top_adress{
+	display: inline-block;
+	width: 190px;
+	text-align: center;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+}
+#top_players{
+	display: inline-block;
+	width: 105px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	border-right: solid white 1px;
 }

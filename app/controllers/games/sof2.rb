@@ -81,17 +81,23 @@ class Sof2
 				else
 					serverInfo[:pure] = "YES"
 				end
-				
 				server_answer[0].each_line do |x|
-					if x =~ /^(\d*) (\d*) (1|2|3).*"(.*)"/
-						if $3 == "0"
-							tmp_dm[$4] = {:score => $1.to_i, :ping => $2}
-						elsif $3 == "1"
-							tmp_red[$4] = {:score => $1.to_i, :ping => $2}
-						elsif $3 == "2"
-							tmp_blue[$4] = {:score => $1.to_i, :ping => $2}
-						elsif $3 == "3"
-							serverInfo[:spectators].push($4)
+					if x =~ /^(\d*) (\d*) (0|1|2|3).*"(.*)"/
+						score = $1
+						ping = $2
+						team = $3
+						playername = $4
+						if playername =~ /</
+							playername = playername.gsub(/</, '')
+						end
+						if team == "0"
+							tmp_dm[playername] = {:score => score.to_i, :ping => ping}
+						elsif team == "1"
+							tmp_red[playername] = {:score => score.to_i, :ping => ping}
+						elsif team == "2"
+							tmp_blue[playername] = {:score => score.to_i, :ping => ping}
+						elsif team == "3"
+							serverInfo[:spectators].push(playername)
 						end
 					end
 				end
