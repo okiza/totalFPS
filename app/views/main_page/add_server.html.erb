@@ -1,0 +1,10 @@
+Add your server to database, fill fields below
+<%= form_tag save_server_path %>
+	<fieldset id = "add_server">
+		<legend>Server info</legend>
+		IP: <%= text_field(:server, :ip, :size => 20) %>
+		Port: <%= text_field(:server, :port, :size => 20) %>
+		Game: <%= select_tag(:game, options_for_select(['Soldier Of Fortune 2', 'Quake 3', 'Counter Strike', 'Call Of Duty 2', 'Call Of Duty 4'], "sof2"), :multiple => false, :size => 1) %>
+	</fieldset>
+	<%= submit_tag("OK", :id => 'button') %>
+</form>

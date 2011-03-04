@@ -7,7 +7,13 @@
 		<span class = "servers_list_record2">
 	<% end %>
 		<span id = "position"><%= i %>.</span>
-		<span id = "name"><%= link_to  "#{$sof2.parseColorsToHTML(name)}", sof2_stats_path(:id => info[:id]) %></span>
+		<span id = "name">
+			<% if info[:alive] == true %>
+				<%= link_to  "#{$sof2.parseColorsToHTML(name)}", sof2_stats_path(:id => info[:id]) %>
+			<% else %>
+				<%= link_to  "#{$sof2.parseColorsToHTML(info[:altName])}", sof2_stats_path(:id => info[:id]) %>
+			<% end %>
+		</span>
 		<span id = "status">
 		<% if info[:alive] == true %>
 			<span id = "alive">Alive</span>
@@ -20,3 +26,4 @@
 	</span>
 	<% i += 1 %>
 <% end %>
+<span id = "bottom_server_menu"><%= link_to 'Find', {:controller => 'main_page', :action => 'find'} %><%= link_to 'Add server', {:controller => 'main_page', :action => 'add_server'} %></span>

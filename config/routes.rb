@@ -41,6 +41,9 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "main_page", :action => 'index'
   map.servers_sof2 '/servers_sof2', :controller => 'main_page', :action => 'servers_sof2'
   map.sof2_stats '/sof2_stats', :controller => 'main_page', :action => 'sof2_stats'
+  map.find '/find', :controller => 'main_page', :action => 'find'
+  map.add_server '/add_server', :controller => 'main_page', :action => 'add_server'
+  map.save_server '/save_server', :controller => 'main_page', :action => 'save_server'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

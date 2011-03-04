@@ -45,88 +45,111 @@ class Sof2
 			if socket.connect_nonblock( sockaddr ) == 0
 				serverInfo[:alive] = true					  # jesli udalo sie polaczyc ustawiamy status alive na true
 				socket.puts "\xFF\xFF\xFF\xFFgetstatus\n" 	  # wysyłamy zapytanie o status
-				server_answer = socket.recvfrom(4096)
-				received = server_answer[0].split(/\\/)
-				index = received.index("scorelimit")
-				serverInfo[:scorelimit] = received[index+1]
-				index = received.index("timelimit")
-				serverInfo[:timelimit] = received[index+1]
-				index = received.index("sv_maxclients")
-				serverInfo[:maxclients] = received[index+1]
-				index = received.index("sv_hostname")
-				serverInfo[:name] = received[index+1]
-				if received.index("sv_punkbuster") != nil
-					index = received.index("sv_punkbuster")
-					if received[index+1] == "0"
-						serverInfo[:punkbuster] = 'NO'
-					else
-						serverInfo[:punkbuster] = 'YES'
-					end
+				begin
+					server_answer = socket.recvfrom(4096)
+				rescue Errno::ECONNREFUSED # jesli server nie odpowiada
+					serverInfo[:alive] = false
+					next
 				end
-				index = received.index("g_gametype")
-				serverInfo[:gametype] = received[index+1]
-				index = received.index("mapname")
-				serverInfo[:mapname] = received[index+1]
-				if received.index("bluescore") != nil
-					index = received.index("bluescore")
-					if received[index+1] =~ /^(\d*).*/
-						serverInfo[:blueScore] = $1
+				if serverInfo[:alive] == true
+					received = server_answer[0].split(/\\/)
+					index = received.index("scorelimit")
+					if index != nil
+						serverInfo[:scorelimit] = received[index+1]
 					end
-					index = received.index("redscore")
-					serverInfo[:redScore] = received[index+1]
-				end
-				index = received.index("sv_pure")
-				if received[index+1] == "0"
-					serverInfo[:pure] = "NO"
+					index = received.index("timelimit")
+					if index != nil
+						serverInfo[:timelimit] = received[index+1]
+					end
+					index = received.index("sv_maxclients")
+					if index != nil
+						serverInfo[:maxclients] = received[index+1]
+					end
+					index = received.index("sv_hostname")
+					if index != nil
+						serverInfo[:name] = received[index+1]
+					end
+					if received.index("sv_punkbuster") != nil
+						index = received.index("sv_punkbuster")
+						if received[index+1] == "0"
+							serverInfo[:punkbuster] = 'NO'
+						else
+							serverInfo[:punkbuster] = 'YES'
+						end
+					end
+					index = received.index("g_gametype")
+					if index != nil
+						serverInfo[:gametype] = received[index+1]
+					end
+					index = received.index("mapname")
+					if index != nil
+						serverInfo[:mapname] = received[index+1]
+					end
+					if received.index("bluescore") != nil
+						index = received.index("bluescore")
+						if received[index+1] =~ /^(\d*).*/
+							serverInfo[:blueScore] = $1
+						end
+						index = received.index("redscore")
+						serverInfo[:redScore] = received[index+1]
+					end
+					index = received.index("sv_pure")
+					if index != nil
+						if received[index+1] == "0"
+							serverInfo[:pure] = "NO"
+						else
+							serverInfo[:pure] = "YES"
+						end
+					end
+					server_answer[0].each_line do |x|
+						if x =~ /^(\d*) (\d*) (0|1|2|3).*"(.*)"/
+							score = $1
+							ping = $2
+							team = $3
+							playername = $4
+							if playername =~ /</
+								playername = playername.gsub(/</, '')
+							end
+							if team == "0"
+								tmp_dm[playername] = {:score => score.to_i, :ping => ping}
+							elsif team == "1"
+								tmp_red[playername] = {:score => score.to_i, :ping => ping}
+							elsif team == "2"
+								tmp_blue[playername] = {:score => score.to_i, :ping => ping}
+							elsif team == "3"
+								serverInfo[:spectators].push(playername)
+							end
+						end
+					end
+					socket.close
+				
+					tmp_red.each_key do |k|
+						if k =~ /BOT/
+							serverInfo[:bots] += 1
+						else
+							serverInfo[:players] += 1
+						end
+					end
+					tmp_blue.each_key do |k|
+						if k =~ /BOT/
+							serverInfo[:bots] += 1
+						else
+							serverInfo[:players] += 1
+						end
+					end
+					tmp_dm.each_key do |k|
+						if k =~ /BOT/
+							serverInfo[:bots] += 1
+						else
+							serverInfo[:players] += 1
+						end
+					end
+					serverInfo[:redTeam] = tmp_red.sort_by {|key, value| value[:score]} 	# sortowanie wg score
+					serverInfo[:blueTeam] = tmp_blue.sort_by {|key, value| value[:score]}	# sortowanie wg score
+					serverInfo[:deathmatch] = tmp_dm.sort_by {|key, value| value[:score]}	# sortowanie wg score
 				else
-					serverInfo[:pure] = "YES"
+					next
 				end
-				server_answer[0].each_line do |x|
-					if x =~ /^(\d*) (\d*) (0|1|2|3).*"(.*)"/
-						score = $1
-						ping = $2
-						team = $3
-						playername = $4
-						if playername =~ /</
-							playername = playername.gsub(/</, '')
-						end
-						if team == "0"
-							tmp_dm[playername] = {:score => score.to_i, :ping => ping}
-						elsif team == "1"
-							tmp_red[playername] = {:score => score.to_i, :ping => ping}
-						elsif team == "2"
-							tmp_blue[playername] = {:score => score.to_i, :ping => ping}
-						elsif team == "3"
-							serverInfo[:spectators].push(playername)
-						end
-					end
-				end
-				socket.close
-			
-				tmp_red.each_key do |k|
-					if k =~ /BOT/
-						serverInfo[:bots] += 1
-					else
-						serverInfo[:players] += 1
-					end
-				end
-				tmp_blue.each_key do |k|
-					if k =~ /BOT/
-						serverInfo[:bots] += 1
-					else
-						serverInfo[:players] += 1
-					end
-				end
-				tmp_dm.each_key do |k|
-					if k =~ /BOT/
-						serverInfo[:bots] += 1
-					else
-						serverInfo[:players] += 1
-					end
-				end
-				serverInfo[:redTeam] = tmp_red.sort_by {|key, value| value[:score]} 	# sortowanie wg score
-				serverInfo[:blueTeam] = tmp_blue.sort_by {|key, value| value[:score]}	# sortowanie wg score
-				serverInfo[:deathmatch] = tmp_dm.sort_by {|key, value| value[:score]}	# sortowanie wg score
 			else
 				serverInfo[:alive] = false
 			end
