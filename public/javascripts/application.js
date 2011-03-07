@@ -8,11 +8,23 @@ $(document).ready(function(){
 		$('#top_menu_buttons_list .dropdown_menu').hover(
         function () {
             //show its submenu
-            $('.dropdown_menu ul').slideDown(200);
+            $('.dropdown_menu ul').stop().slideDown(200);
         }, 
         function () {
             //hide its submenu
-            $('.dropdown_menu ul').delay(100).slideUp(200);         
+            $('.dropdown_menu ul').stop().slideUp(200);         
+        }
+    );	
+});
+$(document).ready(function(){
+		$('#top_menu_buttons_list .dropdown_menu2').hover(
+        function () {
+            //show its submenu
+            $('.dropdown_menu2 ul').stop().slideDown(200);
+        }, 
+        function () {
+            //hide its submenu
+            $('.dropdown_menu2 ul').stop().slideUp(200);         
         }
     );	
 });

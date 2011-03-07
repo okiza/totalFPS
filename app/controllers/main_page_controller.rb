@@ -2,8 +2,9 @@ require 'games/sof2.rb'
 class MainPageController < ApplicationController
 	$sof2 = Sof2.new
 	def index
-	@content_title = "totalFPS main page"
-	@title = "totalFPS"
+		@content_title = "Welcome in totalFPS"
+		@title = "totalFPS"
+		@messages = Message.all(:order => 'created_at DESC')
 	end
 	
 	def servers_sof2
@@ -46,14 +47,25 @@ class MainPageController < ApplicationController
 			if params[:server][:ip] =~ /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/
 				if params[:server][:port] =~ /\d+/
 					if params[:game] == "Soldier Of Fortune 2"
-						server = Sof2Server.find_by_ip(params[:server][:ip])
+						server = Sof2Server.find_by_ip_and_port(params[:server][:ip], params[:server][:port])
 						if server == nil
 							obj = Sof2.new
 							adress = {:ip => params[:server][:ip], :port => params[:server][:port].to_i}
 							info = obj.getStatus(adress)
 							if info[:alive] == true
-								Sof2Server.create(:ip => params[:server][:ip], :port => params[:server][:port], :server_name => info[:name])
-								flash[:notice] = "Server added successfully!!"
+								na_counter = 0
+								info.each do |item, value|
+									if value == "n/a"
+										na_counter += 1
+									end
+								end
+								print "\nna_counter = ",na_counter,"\n"
+								if na_counter > 5
+									flash[:error] = "Sorry, unsupported mod."
+								else
+									Sof2Server.create(:ip => params[:server][:ip], :port => params[:server][:port], :server_name => info[:name])
+									flash[:notice] = "Server added successfully!!"
+								end
 							else
 								flash[:error] = "Sorry, can't connect to your server."
 							end

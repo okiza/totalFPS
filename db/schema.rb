@@ -9,12 +9,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110302103204) do
+ActiveRecord::Schema.define(:version => 20110307175923) do
+
+  create_table "messages", :force => true do |t|
+    t.text     "title"
+    t.text     "content"
+    t.text     "autor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sof2_servers", :force => true do |t|
     t.text     "ip"
     t.integer  "port"
     t.text     "server_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.text     "login"
+    t.text     "password"
+    t.text     "password_confirmation"
+    t.text     "crypted_password"
+    t.text     "password_salt"
+    t.text     "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

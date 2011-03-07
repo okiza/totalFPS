@@ -12,7 +12,10 @@
   font-family: myfont3;
   src: url("Prototype.ttf");
 }
-
+@font-face {
+  font-family: myfont4;
+  src: url("zephyrea.ttf");
+}
 body{
 	background-color: #253202;
 }
@@ -33,15 +36,110 @@ body{
 	height: 265px;
 	margin-left: auto;
 	margin-right: auto;
-	background-image: url("/images/logo.png");
+	background-image: url("/images/layout/logo.png");
 	background-repeat: no-repeat;
+}
+#logo input.button{
+	display: inline-block;
+	width: auto;
+	position: absolute;
+	margin: 0px 0px 0px 870px;
+	background-color: #4D6205;
+	color: white;
+	border: solid #A0DE0D 1px;
+	border-radius: 3px;
+	padding: 3px 10px;
+}
+#logo input.button:hover{
+	display: inline-block;
+	width: auto;
+	position: absolute;
+	margin: 0px 0px 0px 870px;
+	background-color: #597E02;
+	color: white;
+	border: solid #A0DE0D 1px;
+	border-radius: 3px;
+	padding: 3px 10px;
+}
+#logout_menu{
+	display: block;
+	width: 280px;
+	float: right;
+	color: white;
+	text-align: right;
+	margin-right: 10px;
+	background-color: #DBA400;
+	padding: 3px 10px;
+	border-radius: 4px;
+}
+#logout_menu #text{
+	display: inline-block;
+	color: black;
+	font-family: myfont2;
+	font-size: 11px;
+}
+#logout_menu #username{
+	display: inline-block;
+	color: #A0DE0D;
+	font-size: 15px;
+	font-family: myfont3;
+}
+#logout_menu #logout_button{
+	display: inline-block;
+	width: 70px;
+	position: relative;
+	vertical-align: center;
+}
+#logout_menu #logout_button a{
+	display: inline-block;
+	width: auto;
+	color: white;
+	background-color: #4D6205;
+	border: solid #A0DE0D 1px;
+	border-radius: 3px;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 13px;
+	font-family: myfont2;
+}
+#logout_menu #logout_button a:hover{
+	background-color: #597E02;
+}
+#login{
+	display: inline-block;
+	width: 199px;
+	height: 24px;
+	background-image: url("/images/layout/login.png");
+	position: absolute;
+	margin: 0px 0px 0px 472px;
+}
+#login input{
+	width: 120px;
+	font-size: 11px;
+	border: solid white 1px;
+	margin-left: 55px;
+}
+#password{
+	display: inline-block;
+	width: 199px;
+	height: 24px;
+	background-image: url("/images/layout/password.png");
+	position: absolute;
+	margin: 0px 0px 0px 670px;
+}
+#password input{
+	width: 100px;
+	font-size: 11px;
+	border: solid white 1px;
+	margin-left: 55px;
 }
 /* Top menu style */
 #top_menu{
 	display: block;
 	width: 873px;
 	height: 57px;
-	background-image: url("/images/menubar.png");
+	background-image: url("/images/layout/menubar.png");
 	background-repeat: no-repeat;
 	margin-left: auto;
 	margin-right: auto;
@@ -93,6 +191,7 @@ body{
 	margin: 0px 0px 0px -6px; 
 	padding: 0px; 
 	list-style: none;
+	z-index: 2;
 }
 #top_menu_buttons_list .dropdown_menu ul li{
 	border-bottom: 1px solid #8E8F8C;
@@ -111,6 +210,42 @@ body{
 #top_menu_buttons_list .dropdown_menu ul li a:hover{
 	display:block; 
 	width: 110px; 
+	height: 17px;
+	font-family: arial; 
+	font-size: 12px;
+	margin-top: 0px;
+	padding: 5px 5px 0px 5px;
+	color: black;
+	background-color: #A0DC14;
+}
+#top_menu_buttons_list .dropdown_menu2{
+	display: inline-block;
+}
+#top_menu_buttons_list .dropdown_menu2 ul{
+	position: absolute; 
+	display: none; 
+	margin: 0px 0px 0px -6px; 
+	padding: 0px; 
+	list-style: none;
+	z-index: 2;
+}
+#top_menu_buttons_list .dropdown_menu2 ul li{
+	border-bottom: 1px solid #8E8F8C;
+	background-color: #313D01;
+}
+#top_menu_buttons_list .dropdown_menu2 ul li a{
+	display: block; 
+	width: 90px;
+	height: 17px;
+	margin-top: 0px;
+	font-family: arial; 
+	padding: 5px 5px 0px 5px;
+	font-size: 12px; 
+	color: #A2C907;
+}
+#top_menu_buttons_list .dropdown_menu2 ul li a:hover{
+	display:block; 
+	width: 90px; 
 	height: 17px;
 	font-family: arial; 
 	font-size: 12px;
@@ -208,6 +343,7 @@ body{
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
+/* Center content style */
 #center_content #title{
 	display: block;
 	width: 690px;
@@ -223,6 +359,43 @@ body{
 }
 #center_content #title #inside{
 	color: #D69304;
+}
+/* home page news style */
+.news{
+	display: block;
+	width: 650px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+	position: relative;
+}
+.news .title{
+	display: block;
+	width: 645px;
+	color: #D69304;
+	font-family: myfont3;
+}
+.news .content{
+	display: block;
+	width: 645px;
+	border: solid #3E5E01 1px;
+	font-size: 11px; 
+	padding: 10px;
+	background-color: #1D2B01;
+	border-radius: 5px;
+}
+.news .autor{
+	display: block;
+	width: 645px;
+	text-align: right;
+	font-size: 9px;
+	color: #BED60B;
+}
+.news .date{
+	color: white;
+	font-family: myfont3;
 }
 #center_content #main_content{
 	display: block;
@@ -289,7 +462,7 @@ body{
 	width: 60px;
 	text-align: center;
 	border-right: solid white 1px;
-	color: #0FD5F8;
+	color: black;
 	margin: 0px;
 	padding: 0px;
 }
@@ -416,11 +589,19 @@ body{
 }
 fieldset#add_server{
 	display: block;
-	width: 200px;
+	width: 250px;
 	border: solid #E8B008 1px;
 	padding: 10px;
 	margin: 15px 10px 10px 10px;
 	color: #7EA205;
+}
+fieldset#add_server #title{
+		display: inline-block;
+		width: 70px;
+		font-size: 13px;
+		font-family: myfont2;
+		text-align: right;
+		position: relative;
 }
 fieldset#add_server input{
 	background-color: #D7FFAC;
@@ -446,7 +627,292 @@ input#button{
 	background-color: #4D6205;
 	color: white;
 	border-radius: 5px;
+	margin-left: 30px;
 }
 input#button:hover{
 	background-color: #7EA205;
 }
+/* SoF2 server view style */
+#server_info{
+	display: inline-block;
+	width: 250px;
+	border-bottom: solid white 1px;
+	border-right: solid white 1px;
+	border-left: solid white 1px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin: 0px 10px 10px 10px;
+	padding: 6px 0px;
+}
+#server_info_title{
+	display: block;
+	width: 242px;
+	text-align: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	border-bottom: solid white 1px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #DE8F06;
+	padding: 5px 0px 2px 10px;
+	color: black;
+	font-family: myfont3;
+}
+#server_info .record{
+	display: block;
+	width: 285px;
+	font-size: 10px;
+	color: white;
+	margin-left: auto;
+	margin-right;: auto;
+}
+#server_info .record img{
+	width: 24px;
+	height: 24px;
+	vertical-align: top;
+}
+#server_info .record .title{
+	display: inline-block;
+	width: 90px;
+	text-align: right;
+	margin-left: 10px;
+	padding: 1px 2px;
+	color: #54B806;
+}
+#server_info #map_image{
+	display: block;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: #454644;
+	padding: 5px 0px;
+}
+#server_info img{
+	width: 120px;
+	height: 100px;
+	border: solid #737372 1px;
+}
+#server_info_box1{
+	display: inline-block;
+}
+#server_info_box2{
+	display: inline-block;
+	vertical-align: top;
+}
+#server_info_box3{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#teams_info{
+	display: inline-block;
+	width: 600px;
+	border-bottom: solid white 1px;
+	border-right: solid white 1px;
+	border-left: solid white 1px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin: 0px 10px 10px 10px;
+	padding: 6px 0px;
+}
+#teams_info_title{
+	display: block;
+	width: 591px;
+	text-align: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	border-bottom: solid white 1px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #DE8F06;
+	padding: 5px 0px 2px 10px;
+	color: black;
+	font-family: myfont3;
+}
+#teams_info #red_box{
+	display: inline-block;
+	margin-left: -10px;
+}
+#teams_info #blue_box{
+	display: inline-block;
+	vertical-align : top;
+}
+#teams_info #red_team{
+	display: block;
+	width: 270px;
+	border: solid red 1px;
+	margin-left: 25px;
+	background-color: #2F0402;
+	padding: 5px;
+}
+#teams_info #red_title{
+	display: block;
+	width: 270px;
+	color: white;
+	background-color: #2F0402;
+	padding: 3px 0px 3px 10px ;
+	font-size: 13px;
+	margin-left: 25px;
+	font-family: myfont4;
+}
+#teams_info #red_title #red_players{
+	display: inline-block;
+	width: 70px;
+	text-align: left;
+	color: white;
+	font-family: myfont3;
+	font-size: 10px;
+}
+#teams_info #red_title #red_name{
+	display: inline-block;
+	width: 140px;
+	text-align: center;
+	color: red;
+	font-size: 15px;
+}
+#teams_info #red_title #red_score{
+	display: inline-block;
+	width: 50px;
+	text-align: right;
+	color: yellow;
+	font-size: 15px;
+	font-family: myfont3;
+}
+#teams_info #blue_team{
+	display: block;
+	width: 270px;
+	border: solid blue 1px;
+	vertical-align: top;
+	background-color: #0A0339;
+	padding: 5px;
+}
+#teams_info #blue_title{
+	display: block;
+	width: 270px;
+	color: white;
+	background-color: #0A0339;
+	padding: 3px 0px 3px 10px ;
+	font-size: 13px;
+	font-family: myfont4;
+}
+#teams_info #blue_title #blue_players{
+	display: inline-block;
+	width: 70px;
+	text-align: right;
+	color: white;
+	font-family: myfont3;
+	font-size: 10px;
+}
+#teams_info #blue_title #blue_name{
+	display: inline-block;
+	width: 140px;
+	text-align: center;
+	color: blue;
+	font-size: 15px;
+}
+#teams_info #blue_title #blue_score{
+	display: inline-block;
+	width: 50px;
+	text-align: left;
+	color: yellow;
+	font-size: 15px;
+	font-family: myfont3;
+}
+#teams_info .player_info{
+	display: block;
+	width: 260px;
+	font-size: 10px;
+	color: white;
+}
+#teams_info .player_info .red_name_title{
+	display: inline-block;
+	width: 160px;
+	text-align: center;
+	color: #B5DF0C;
+	border-bottom: solid white 1px;
+}
+#teams_info .player_info .red_score_title{
+	display: inline-block;
+	width: 65px;
+	text-align: center;
+	color: #B5DF0C;
+	border-bottom: solid white 1px;
+}
+#teams_info .player_info .red_ping_title{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	color: #B5DF0C;
+	border-bottom: solid white 1px;
+}
+
+#teams_info .player_info .red_name{
+	display: inline-block;
+	width: 160px;
+	text-align: left;
+	color: #B5DF0C;
+	font-family: myfont3;
+	padding-left: 6px;
+	
+}
+#teams_info .player_info .red_score{
+	display: inline-block;
+	width: 65px;
+	text-align: right;
+	font-family: myfont3;
+	font-size: 12px; 
+	color: yellow;
+}
+#teams_info .player_info .red_ping{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+}
+#teams_info .player_info .blue_name_title{
+	display: inline-block;
+	width: 160px;
+	text-align: center;
+	color: #B5DF0C;
+	border-bottom: solid white 1px;
+}
+#teams_info .player_info .blue_score_title{
+	display: inline-block;
+	width: 65px;
+	text-align: center;
+	color: #B5DF0C;
+	border-bottom: solid white 1px;
+}
+#teams_info .player_info .blue_ping_title{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	color: #B5DF0C;
+	border-bottom: solid white 1px;
+}
+
+#teams_info .player_info .blue_name{
+	display: inline-block;
+	width: 160px;
+	text-align: right;
+	color: #B5DF0C;
+	font-family: myfont3;
+	padding-left: 0px;
+	
+}
+#teams_info .player_info .blue_score{
+	display: inline-block;
+	width: 65px;
+	text-align: left;
+	font-family: myfont3;
+	font-size: 12px; 
+	color: yellow;
+	padding-left: 5px;
+}
+#teams_info .player_info .blue_ping{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+}
+
+

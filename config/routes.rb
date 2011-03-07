@@ -44,6 +44,9 @@ ActionController::Routing::Routes.draw do |map|
   map.find '/find', :controller => 'main_page', :action => 'find'
   map.add_server '/add_server', :controller => 'main_page', :action => 'add_server'
   map.save_server '/save_server', :controller => 'main_page', :action => 'save_server'
+  map.admin '/admin', :controller => 'admin', :action => 'index'
+  map.login '/login', :controller => 'session', :action => 'create'
+  map.logout '/logout', :controller => 'session', :action => 'destroy'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

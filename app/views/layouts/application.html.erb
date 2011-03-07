@@ -8,7 +8,13 @@
 </head>
 <body>
 	<span id = "main_layout">
-		<span id = "logo"></span>
+		<span id = "logo">
+			<% if current_user %>
+				<span id = "logout_menu"><span id = "text">You are logged in as: </span><span id = "username"> <%= current_user.login %></span><span id = "logout_button"><%= link_to "Logout", logout_path %></span></span>
+			<% else %>
+				<% form_for :session, @user_session, :url => {:controller => "session", :action => "create" } do |f| %><span id = "login"><%= f.text_field(:login) %></span><span id = "password"><%= f.password_field(:password) %></span> <%= f.submit("GO!", :class => 'button') %> <% end %>
+			<% end %>
+		</span>
 		<span id = "top_menu">
 			<span id = "top_menu_buttons_list">
 				<%= link_to "Home", {:controller => "main_page", :action => "index"} %> <span class = "separator">|</span>
@@ -23,7 +29,16 @@
 				</span>
 				<span class = "separator">|</span>
 				<a href = "#"> Players </a> <span class = "separator">|</span>
-				<a href = "#"> Games </a> <span class = "separator">|</span>
+				<span class = "dropdown_menu2"> <a href = "#"> Games </a>
+					<ul>
+						<li> <%= link_to "SoF2", {:controller => "main_page", :action => "servers_sof2"} %> </li>
+						<li> <a href = "#">Quake3</a> </li>
+						<li> <a href = "#">CS</a> </li>
+						<li> <a href = "#">CoD2</a> </li>
+						<li> <a href = "#">CoD4</a> </li>
+					</ul>
+				</span>
+				<span class = "separator">|</span>
 				<a href = "#"> Help </a>
 			</span>
 		</span>

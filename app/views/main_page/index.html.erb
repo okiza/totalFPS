@@ -1,1 +1,8 @@
-Welcome in totalFPS - most popular games servers statistics system.
+Latest news:
+<% @messages.each do |news| %>
+	<span class = "news">
+		<span class = "title"> <%= news.title %> <span class = "date">[<%= news.created_at.strftime("%a %d.%m.%Y %H:%M") %>]</span> </span>
+		<span class = "content"> <%= news.content %> </span>
+		<span class = "autor">Added by:  <%= news.autor %> </span>
+	</span>
+<% end %>

@@ -1,39 +1,71 @@
-<% if @serverInfo[:alive] == true %>
-	Status: Alive<br>
-<% else %>
-	Status: Dead<br>
-<% end %>
-	IP:<%= @serverInfo[:ip] %>:<%= @serverInfo[:port] %><br>
-	Players:<%= @serverInfo[:players] %>/<%= @serverInfo[:maxclients] %><br>
-	Bots:<%= @serverInfo[:bots] %><br>
-	Scorelimit:<%= @serverInfo[:scorelimit] %><br>
-	Timelimit:<%= @serverInfo[:timelimit] %><br>
-	Pure:<%= @serverInfo[:pure] %><br>
-	Punk Buster:<%= @serverInfo[:punkbuster] %><br>
-	Map: <%= @serverInfo[:mapname] %><br>
-	Gametype: <%= @serverInfo[:gametype] %><br>
-	
-	<% if @serverInfo[:gametype] == "DM" || @serverInfo[:gametype] == "dm" %>
-		Deathmatch player list:<br>
-		<% @serverInfo[:deathmatch].reverse.each do |element| %>
-			<% name = element[0].dup %>
-			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
+<span id = "server_info_box1">
+	<span id = "server_info_title">Server info:</span>
+	<span id = "server_info">
+		<span class = "record"><span class = "title">Game:</span><%= image_tag "/images/games_icons/sof2.png" %></span>
+		<span class = "record"><% if @serverInfo[:alive] == true %>
+			<span class = "title">Status:</span>Alive<br>
+		<% else %>
+			<span class = "title">Status:</span>Dead<br>
 		<% end %>
-	<% else %>
-		Blue team score:<%= @serverInfo[:blueScore] %><br>
-		Red team score:<%= @serverInfo[:redScore] %><br>
-		<br>
-		Red team:<br>
-		=========================================================<br>
-		<% @serverInfo[:redTeam].reverse.each do |element| %>
-			<% name = element[0].dup %>
-			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
+		</span>
+		<span class = "record"><span class = "title">IP:</span><%= @serverInfo[:ip] %>:<%= @serverInfo[:port] %></span>
+		<span class = "record"><span class = "title">Scorelimit:</span><%= @serverInfo[:scorelimit] %></span>
+		<span class = "record"><span class = "title">Timelimit:</span><%= @serverInfo[:timelimit] %></span>
+		<span class = "record"><span class = "title">Pure:</span><%= @serverInfo[:pure] %></span>
+		<span class = "record"><span class = "title">Punk Buster:</span><%= @serverInfo[:punkbuster] %></span>
+	</span>
+</span>
+<span id = "server_info_box2">
+	<span id = "server_info_title">Current game info:</span>
+	<span id = "server_info">
+		<span id = "map_image">
+			<% if File.exists?("public/images/maps/sof2/#{@serverInfo[:mapname]}.jpg") %>
+				<img src="/images/maps/sof2/<%=@serverInfo[:mapname]%>.jpg">
+			<% else %>
+				<img src="/images/maps/sof2/unknown.jpg">
+			<% end %>
+		</span>
+		<span class = "record"><span class = "title">Map:</span><%= @serverInfo[:mapname] %></span>
+		<span class = "record"><span class = "title">Players:</span><%= @serverInfo[:players] %>/<%= @serverInfo[:maxclients] %></span>
+		<span class = "record"><span class = "title">Bots:</span><%= @serverInfo[:bots] %></span>
+		<span class = "record"><span class = "title">Gametype:</span><%= @serverInfo[:gametype] %></span>
+	</span>
+</span>
+<span id = "server_info_box3">
+	<span id = "teams_info_title">Online players:</span>
+	<span id = "teams_info">
+		<% if @serverInfo[:gametype] == "DM" || @serverInfo[:gametype] == "dm" %>
+			Deathmatch player list:<br>
+			<% @serverInfo[:deathmatch].reverse.each do |element| %>
+				<% name = element[0].dup %>
+				<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
+			<% end %>
+		<% else %>
+			<span id = "red_box">
+				<span id = "red_title"><span id = "red_players">players: <%= @serverInfo[:redTeam].length %></span><span id = "red_name">Red Team</span><span id = "red_score"><%= @serverInfo[:redScore] %></span></span>
+				<span id = "red_team">
+					<span class = "player_info"><span class = "red_name_title">Playername</span><span class = "red_ping_title">Ping</span><span class = "red_score_title">Score</span></span>
+					<% @serverInfo[:redTeam].reverse.each do |element| %>
+						<% name = element[0].dup %>
+							<span class = "player_info"><span class = "red_name"><%= $sof2.parseColorsToHTML(name) %></span><span class = "red_ping"><%= element[1][:ping] %>ms</span><span class = "red_score"><%= element[1][:score] %></span></span>
+					<% end %>
+				</span>
+			</span>
+			<span id = "blue_box">
+				<span id = "blue_title"><span id = "blue_score"><%= @serverInfo[:blueScore] %></span><span id = "blue_name">Blue Team</span><span id = "blue_players">players: <%= @serverInfo[:blueTeam].length %></span></span>
+				<span id = "blue_team">
+					<span class = "player_info"><span class = "blue_score_title">Score</span><span class = "blue_ping_title">Ping</span><span class = "blue_name_title">Playername</span></span>
+					<% @serverInfo[:blueTeam].reverse.each do |element| %>
+						<% name = element[0].dup %>
+							<span class = "player_info"><span class = "blue_score"><%= element[1][:score] %></span><span class = "blue_ping"><%= element[1][:ping] %>ms</span><span class = "blue_name"><%= $sof2.parseColorsToHTML(name) %></span></span>
+					<% end %>
+				</span>
+			</span>
 		<% end %>
-		<br>
-		Blue team:<br>
-		==========================================================<br>
-		<% @serverInfo[:blueTeam].reverse.each do |element| %>
-			<% name = element[0].dup %>
-			<%= $sof2.parseColorsToHTML(name) %> | ping: <%= element[1][:ping] %> | score: <%= element[1][:score] %><br>
-		<% end %>
-	<% end %>
+	</span>
+</span>
+<span id = "server_info_box3">
+	<span id = "teams_info_title">Players stats:</span>
+	<span id = "teams_info">
+	</span>
+</span>
