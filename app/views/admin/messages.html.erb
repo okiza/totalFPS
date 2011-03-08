@@ -1,0 +1,11 @@
+<% content_for :sub_menu do %>
+	<%= link_to "Add new message", {:controller => "admin", :action => "new_message"} %> |
+<% end %>
+
+<% @messages.each do |news| %>
+	<span class = "news">
+		<span class = "admin_message_title"> <%= news.title %> <span class = "admin_message_date">[<%= news.created_at.strftime("%a %d.%m.%Y %H:%M") %>]</span> <%= link_to "Delete", delete_message_path(:id => news.id), :confirm => "Are you sure?" %> | <%= link_to "Edit", edit_message_path(:id => news.id) %> </span>
+		<span class = "admin_message_content"> <%= news.content %> </span>
+		<span class = "autor">Added by:  <%= news.autor %> </span>
+	</span>
+<% end %>

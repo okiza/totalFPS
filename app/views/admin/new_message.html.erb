@@ -1,0 +1,12 @@
+<% content_for :sub_menu do %>
+	<%= link_to "Add new message", {:controller => "admin", :action => "new_message"} %> |
+<% end %>
+
+<%= form_tag save_message_path %>
+	<span class = "news">
+		<span class = "admin_message_title"> <%= text_field(:message, :title, :size => 20, :maxlength => 20) %> </span>
+		<span class = "admin_message_content"> <%= text_area(:message, :content, :size => "105x7") %> </span>
+		<span class = "autor">Added by:  <%= text_field(:message, :autor, :size => 20) %> </span>
+	</span>
+	<%= submit_tag("Save", :class => 'save_message_button') %>
+</form>

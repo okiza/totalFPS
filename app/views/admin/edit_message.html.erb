@@ -1,0 +1,12 @@
+<% content_for :sub_menu do %>
+	<%= link_to "Add new message", {:controller => "admin", :action => "new_message"} %> |
+<% end %>
+
+<% form_for(:message, @message, :url => {:action => "update_message", :id => @message.id}) do |f| %>
+	<span class = "news">
+		<span class = "admin_message_title"> <%= f.text_field(:title, :size => 20, :maxlength => 20, :value => "#{@message.title}") %> </span>
+		<span class = "admin_message_content"> <%= f.text_area(:content, :size => "105x7", :value => "#{@message.content}") %> </span>
+		<span class = "autor">Added by:  <%= f.text_field(:autor, :size => 20, :value => "#{@message.autor}") %> </span>
+	</span>
+	<%= f.submit("Update", :class => 'save_message_button') %>
+<% end %>

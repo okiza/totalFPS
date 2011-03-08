@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <head>
-	<title><%= @title %></title>
+	<title>Admin Panel</title>
     <%= javascript_include_tag 'jquery' %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'style' %>
@@ -72,7 +72,13 @@
 			</span>
 			<span id = "center_content">
 				<span id = "title">[ <span id = "inside"><%= @content_title %></span> ]</span>
-				<span id = "main_content">
+				<span id = "admin_menu">
+					<%= link_to "Messages", {:controller => "admin", :action => "messages"} %> | 
+					<%= link_to "Servers", {:controller => "admin", :action => "messages"} %> | 
+					<%= link_to "Players", {:controller => "admin", :action => "messages"} %> | 
+				</span>
+				<span id = "admin_main_content">
+					<span id = "sub_menu"> <%= yield :sub_menu %> </span>
 					<%= yield %>
 				</span>
 			</span>
