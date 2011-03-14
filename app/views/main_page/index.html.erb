@@ -1,4 +1,5 @@
 Latest messages:
+<%= will_paginate @messages, :class => "pagination" %>
 <% @messages.each do |news| %>
 	<span class = "news">
 		<span class = "title"> <%= news.title %> <span class = "date">[<%= news.created_at.strftime("%a %d.%m.%Y %H:%M") %>]</span> </span>
@@ -6,3 +7,4 @@ Latest messages:
 		<span class = "autor">Added by:  <%= news.autor %> </span>
 	</span>
 <% end %>
+<%= will_paginate @messages, :class => "pagination" %>

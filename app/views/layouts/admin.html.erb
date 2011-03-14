@@ -31,11 +31,11 @@
 				<a href = "#"> Players </a> <span class = "separator">|</span>
 				<span class = "dropdown_menu2"> <a href = "#"> Games </a>
 					<ul>
-						<li> <%= link_to "SoF2", {:controller => "main_page", :action => "servers_sof2"} %> </li>
-						<li> <a href = "#">Quake3</a> </li>
-						<li> <a href = "#">CS</a> </li>
-						<li> <a href = "#">CoD2</a> </li>
-						<li> <a href = "#">CoD4</a> </li>
+						<li> <%= link_to "SoF2", {:controller => "main_page", :action => "sof2_game_info"} %> </li>
+						<li> <%= link_to "Quake3", {:controller => "main_page", :action => "q3_game_info"} %> </li>
+						<li> <%= link_to "CS", {:controller => "main_page", :action => "cs_game_info"} %> </li>
+						<li> <%= link_to "CoD2", {:controller => "main_page", :action => "cod2_game_info"} %> </li>
+						<li> <%= link_to "CoD4", {:controller => "main_page", :action => "cod4_game_info"} %> </li>
 					</ul>
 				</span>
 				<span class = "separator">|</span>
@@ -52,30 +52,20 @@
 		<span id = "center_box">
 			<span id = "left_content">
 				<span class = "box">
-					<span id = "title">>> Box1 Title << </span>
+					<span id = "title">Info menu</span>
 					<span id = "content">
-						jakas tresc jakas trescjakas tresc
-						jakas trescjakas trescjakas tresc
-						jakas trescjakas trescjakas tresc
-						jakas trescjakas trescjakas tresc
-					</span>
-				</span>
-				<span class = "box">
-					<span id = "title">>> Box2 Title << </span>
-					<span id = "content">
-						jakas tresc jakas trescjakas tresc
-						jakas trescjakas trescjakas tresc
-						jakas trescjakas trescjakas tresc
-						jakas trescjakas trescjakas tresc
+						<a href = "#">Help</a>
+						<a href = "#">About application</a>
+						<a href = "#">About admin panel</a>
 					</span>
 				</span>
 			</span>
 			<span id = "center_content">
-				<span id = "title">[ <span id = "inside"><%= @content_title %></span> ]</span>
+				<span id = "title">[ <span id = "inside">Admin Panel - <%= @content_title %></span> ]</span>
 				<span id = "admin_menu">
 					<%= link_to "Messages", {:controller => "admin", :action => "messages"} %> | 
-					<%= link_to "Servers", {:controller => "admin", :action => "messages"} %> | 
-					<%= link_to "Players", {:controller => "admin", :action => "messages"} %> | 
+					<%= link_to "Servers", {:controller => "admin", :action => "servers"} %> | 
+					<%= link_to "Players", {:controller => "admin", :action => "players"} %> | 
 				</span>
 				<span id = "admin_main_content">
 					<span id = "sub_menu"> <%= yield :sub_menu %> </span>

@@ -16,6 +16,10 @@
   font-family: myfont4;
   src: url("zephyrea.ttf");
 }
+@font-face {
+  font-family: myfont5;
+  src: url("JAi_____.TTF");
+}
 body{
 	background-color: #253202;
 }
@@ -205,7 +209,7 @@ body{
 	margin: 0px 0px 0px -6px; 
 	padding: 0px; 
 	list-style: none;
-	z-index: 2;
+	z-index: 10;
 }
 #top_menu_buttons_list .dropdown_menu ul li{
 	border-bottom: 1px solid #8E8F8C;
@@ -241,7 +245,7 @@ body{
 	margin: 0px 0px 0px -6px; 
 	padding: 0px; 
 	list-style: none;
-	z-index: 2;
+	z-index: 10;
 }
 #top_menu_buttons_list .dropdown_menu2 ul li{
 	border-bottom: 1px solid #8E8F8C;
@@ -359,13 +363,25 @@ body{
 	font-family: myfont2;
 	background-color: #1E2501;
 }
+.box #content a{
+	display: block;
+	width: 185px;
+	text-align: left;
+	text-decoration: none;
+	color: white;
+	font-family: myfont2;
+	padding: 2px 0px 2px 10px;
+}
+.box #content a:hover{
+	color: #40D405;
+}
 .box #title{
 	display: block;
 	width: 190px;
 	padding: 2px 0px 2px 10px;
 	font-size: 13px;
 	color: #B7E20A;
-	font-family: myfont2;
+	font-family: myfont3;
 	background-color: black;
 	border-bottom: solid white 1px;
 	border-top-left-radius: 10px;
@@ -409,7 +425,7 @@ body{
 	display: block;
 	width: 645px;
 	border: solid #3E5E01 1px;
-	font-size: 11px; 
+	font-size: 10px; 
 	padding: 10px;
 	background-color: #1D2B01;
 	border-radius: 5px;
@@ -943,6 +959,19 @@ input#button:hover{
 	text-align: center;
 }
 /*  Admin panel style sheet */
+#admin_welcome{
+	font-size: 11px;
+	color: white;
+}
+#admin_welcome ul li{
+	color: black;
+}
+#admin_welcome ul li img{
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin: 3px;
+}
 #admin_main_content{
 	display: block;
 	width: 688px;
@@ -999,10 +1028,20 @@ input#button:hover{
 	display: block;
 	width: 645px;
 	border: solid #3E5E01 1px;
-	font-size: 10px; 
+	font-size: 9px; 
 	padding: 10px;
 	background-color: #1D2B01;
 	border-radius: 5px;
+	font-family: myfont2;
+}
+.code{
+	display: block;
+	background-color: #353535;
+	color: #9F9D9D;
+	padding: 2px 10px;
+	margin: 5px 0px 5px 30px;
+	border-left: solid #00E6ED 2px;
+	font-family: myfont5;
 }
 .admin_message_date{
 	color: white;
@@ -1034,15 +1073,61 @@ input#button:hover{
 	color: white;
 	font-family: myfont2;
 }
-input.save_message_button{
-	display: block;
+.save_message_button{
+	display: inlien-block;
 	width: auto;
-	padding: 3px 10px;
+	padding: 2px 5px;
 	background-color: #4D6205;
 	color: white;
 	border-radius: 5px;
-	margin-left: 600px;
+	float: right;
+	position: relative;
+	margin-top: 10px;
+	margin-left: 3px;
+	border: solid white 1px;
 }
-input.save_message_button:hover{
+.save_message_button:hover{
 	background-color: #7EA205;
+}
+.save_message_button a{
+	display: block;
+	width: 100%;
+	height: auto;
+	color: white;
+	text-decoration: none;
+	font-size: 13px;
+}
+#admin_content{
+	display: block;
+	width: auto;
+	font-size: 11px;
+	margin-top: 15px;
+	padding: 5px;
+}
+/* Pagination menu style */
+.pagination{
+	display: block;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	font-size: 9px;
+	text-align: center;
+}
+.pagination a{
+	color: #529304;
+	text-decoration: none;
+}
+.pagination .current{
+	color: #E9CB04;
+	font-size: 11px;
+}
+.pagination a.next_page{
+	color: #B0B0B0;
+}
+.pagination a.prev_page{
+	color: #B0B0B0;
+}
+.pagination .disabled{
+	color: #5C5B56;
 }

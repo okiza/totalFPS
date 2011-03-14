@@ -8,5 +8,5 @@
 		<span class = "admin_message_content"> <%= text_area(:message, :content, :size => "105x7") %> </span>
 		<span class = "autor">Added by:  <%= text_field(:message, :autor, :size => 20) %> </span>
 	</span>
-	<%= submit_tag("Save", :class => 'save_message_button') %>
+	<span class = "save_message_button"><%= link_to "Cancel", messages_path %></span> <%= submit_tag("Save", :class => 'save_message_button') %>
 </form>

@@ -44,8 +44,14 @@ ActionController::Routing::Routes.draw do |map|
   map.find '/find', :controller => 'main_page', :action => 'find'
   map.add_server '/add_server', :controller => 'main_page', :action => 'add_server'
   map.save_server '/save_server', :controller => 'main_page', :action => 'save_server'
+  map.sof2_game_info '/sof2_game_info', :controller => 'main_page', :action => 'sof2_game_info'
+  map.q3_game_info '/q3_game_info', :controller => 'main_page', :action => 'q3_game_info'
+  map.cs_game_info '/cs_game_info', :controller => 'main_page', :action => 'cs_game_info'
+  map.cod2_game_info '/cod2_game_info', :controller => 'main_page', :action => 'cod2_game_info'
+  map.cod4_game_info '/cod4_game_info', :controller => 'main_page', :action => 'cod4_game_info'
   map.login '/login', :controller => 'session', :action => 'create'
   map.logout '/logout', :controller => 'session', :action => 'destroy'
+  # sciezki w panelu admina
   map.admin '/admin', :controller => 'admin', :action => 'index'
   map.messages '/messages', :controller => 'admin', :action => 'messages'
   map.new_message '/new_message', :controller => 'admin', :action => 'new_message'
@@ -53,6 +59,8 @@ ActionController::Routing::Routes.draw do |map|
   map.delete_message '/delete_message', :controller => 'admin', :action => 'delete_message'
   map.edit_message '/edit_message', :controller => 'admin', :action => 'edit_message'
   map.update_message '/update_message', :controller => 'admin', :action => 'update_message'
+  map.servers '/servers', :controller => 'admin', :action => 'servers'
+  map.players '/players', :controller => 'admin', :action => 'players'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

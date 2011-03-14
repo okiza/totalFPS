@@ -8,5 +8,5 @@
 		<span class = "admin_message_content"> <%= f.text_area(:content, :size => "105x7", :value => "#{@message.content}") %> </span>
 		<span class = "autor">Added by:  <%= f.text_field(:autor, :size => 20, :value => "#{@message.autor}") %> </span>
 	</span>
-	<%= f.submit("Update", :class => 'save_message_button') %>
+	<span class = "save_message_button"><%= link_to "Cancel", messages_path %></span> <%= f.submit("Update", :class => 'save_message_button') %>
 <% end %>

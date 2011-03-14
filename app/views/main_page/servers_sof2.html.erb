@@ -1,6 +1,6 @@
 <% i = 1 %>
 <span id = "servers_list_header"><span id = "top_position">Rank</span><span id = "top_name">Name</span><span id = "top_status">Status</span><span id = "top_players">Players</span><span id = "top_adress">IP adress</span></span>
-<% @servers_info.each do |name, info| %>
+<% @sof2_servers.each do |server| %>
 	<% if i % 2 == 0%>
 		<span class = "servers_list_record1">
 	<% else %>
@@ -8,21 +8,21 @@
 	<% end %>
 		<span id = "position"><%= i %>.</span>
 		<span id = "name">
-			<% if info[:alive] == true %>
-				<%= link_to  "#{$sof2.parseColorsToHTML(name)}", sof2_stats_path(:id => info[:id]) %>
+			<% if server.server_name != "" %>
+				<%= link_to  "#{$sof2.parseColorsToHTML(server.server_name)}", sof2_stats_path(:id => server.id) %>
 			<% else %>
-				<%= link_to  "#{$sof2.parseColorsToHTML(info[:altName])}", sof2_stats_path(:id => info[:id]) %>
+				<%= link_to  "Unknown", sof2_stats_path(:id => server.ip) %>
 			<% end %>
 		</span>
 		<span id = "status">
-		<% if info[:alive] == true %>
+		<% if server.status == "Alive" %>
 			<span id = "alive">Alive</span>
 		<% else %>
 			<span id = "dead">Dead</span>
 		<% end %>
 		</span>
-		<span id = "players"><%= info[:players] %>/<%= info[:maxclients] %></span>
-		<span id = "adress"><%= info[:ip] %>:<%= info[:port] %></span>
+		<span id = "players"> <%= server.online_players %> </span>
+		<span id = "adress"><%= server.ip %>:<%= server.port %></span>
 	</span>
 	<% i += 1 %>
 <% end %>

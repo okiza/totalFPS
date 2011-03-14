@@ -4,22 +4,13 @@ class MainPageController < ApplicationController
 	def index
 		@content_title = "Welcome in totalFPS"
 		@title = "totalFPS"
-		@messages = Message.all(:order => 'created_at DESC')
+		@messages = Message.paginate(:order => 'created_at DESC', :page => params[:page])
 	end
 	
 	def servers_sof2
 		@title = "Soldier Of Fortune 2 servers"
 		@content_title = "Soldier Of Fortune 2 servers"
-		sof2_servers = Sof2Server.find(:all)
-		sof2 = Sof2.new
-		@servers_info = {}
-		sof2_servers.each do |server|
-			adress = {:ip => server.ip, :port => server.port}
-			info = sof2.getStatus(adress)
-			info[:id] = server.id
-			info[:altName] = server.server_name
-			@servers_info[info[:name]] = info
-		end
+		@sof2_servers = Sof2Server.find(:all)
 	end
 	
 	def sof2_stats
@@ -44,7 +35,7 @@ class MainPageController < ApplicationController
 		if params[:server][:ip] == "" || params[:server][:port] == ""
 			flash[:error] = "You must fill all fields!!"
 		else
-			if params[:server][:ip] =~ /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/
+			if params[:server][:ip] =~ /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(.*)/ && $2.empty?
 				if params[:server][:port] =~ /\d+/
 					if params[:game] == "Soldier Of Fortune 2"
 						server = Sof2Server.find_by_ip_and_port(params[:server][:ip], params[:server][:port])
@@ -59,7 +50,6 @@ class MainPageController < ApplicationController
 										na_counter += 1
 									end
 								end
-								print "\nna_counter = ",na_counter,"\n"
 								if na_counter > 5
 									flash[:error] = "Sorry, unsupported mod."
 								else
@@ -81,5 +71,30 @@ class MainPageController < ApplicationController
 			end
 		end
 		redirect_to :action => 'add_server'
+	end
+	
+	def sof2_game_info
+		@title = "Soldier Of Fortune 2 - Game info"
+		@content_title = "Soldier Of Fortune 2 - Game info"
+	end
+	
+	def q3_game_info
+		@title = "Quake 3 Info - Game info"
+		@content_title = "Quake 3 - Game info"
+	end
+	
+	def cs_game_info
+		@title = "Counter Strike - Game info"
+		@content_title = "Counter Strike - Game info"
+	end
+	
+	def cod2_game_info
+		@title = "Call Of Duty 2 - Game info"
+		@content_title = "Call of Duty 2 - Game info"
+	end
+	
+	def cod4_game_info
+		@title = "Call Of Duty 4 - Game info"
+		@content_title = "Call Of Duty 4 - Game info"
 	end
 end
